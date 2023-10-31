@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="./Favicon.png" />
+  <title>Open-Meteo</title>
+  
+  <link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+  <div class="container" id="app">
+    <h1>Погода в {{ city == "" ? "вашому місті" : "&laquo " + cityName + " &raquo"}} </h1>
+    <div class="form-control">
+      <input 
+          type="text"
+          :placeholder="placeholderString" 
+          v-model="city"
+          @keyup.enter="getWeather()"
+      />
+      <p class="error">{{ error }}</p>
+      
+        
+    </div>
+    <div id="chartReport">
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+  <hr/>
+  
+  <!-- Open-Meteo атрибуція -->
+  <small><a href="https://open-meteo.com/">Weather data by Open-Meteo.com</a></small>
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="./app.js"></script>
+ 
+</body>
+</html>

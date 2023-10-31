@@ -1,0 +1,28 @@
+body {
+    background: #dfebdf;
+}
+.container {
+    width: 80%; 
+    margin: 0 auto;
+}
+
+h1, .form-control {
+    text-align: center;
+
+}
+
+input {
+    font-size: 17px;
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 100%; 
+    }
+  }
+
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 20px;
+    }
+}
