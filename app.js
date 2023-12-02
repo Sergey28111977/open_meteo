@@ -33,7 +33,7 @@ const App = {
 
 // Отримайте максимальну та мінімальну температуру
 
-                const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + long + '8&daily=temperature_2m_max,temperature_2m_min&timezone=' + tz;
+                const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + long + '&daily=temperature_2m_max,temperature_2m_min,rain_sum,snowfall_sum,&forecast_days=14';
 
                 fetch(url)
                 .then(data => data.json())
@@ -43,16 +43,26 @@ const App = {
                 function drawChart(json) {
                     
                     const mydata = {
-                    labels: json.daily.time,
-                    datasets: [{
-                        label: 'Найвища температура',
-                        data: json.daily.temperature_2m_max,
-                        borderColor: 'rgb(192, 75, 75)',
-                    },{
-                        label: 'Найнижча температура',
-                        data: json.daily.temperature_2m_min,
-                        borderColor: 'rgb(75, 75, 192)',
-                    }]
+                        labels: json.daily.time,
+                        datasets: [{
+                            label: 'Найвища температура',
+                            data: json.daily.temperature_2m_max,
+                            borderColor: 'rgb(192, 75, 75)',
+                        },{ 
+                            label: 'Найнижча температура',
+                            data: json.daily.temperature_2m_min,
+                            borderColor: 'rgb(75, 75, 192)', 
+                        },{
+                            type: 'bar',
+                            label: 'Дощ',
+                            data: json.daily.rain_sum,
+                            backgroundColor: 'rgb(0, 255, 0)',
+                        },{
+                            type: 'bar',
+                            label: 'Сніг',
+                            data: json.daily.snowfall_sum,
+                            backgroundColor: 'rgb(0, 255, 255)',
+                        }]
                     };
 
                     new Chart(document.getElementById('myChart'), {
