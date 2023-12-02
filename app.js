@@ -45,21 +45,21 @@ const App = {
                     const mydata = {
                         labels: json.daily.time,
                         datasets: [{
-                            label: 'Найвища температура',
+                            label: 'Найвища температура,°C',
                             data: json.daily.temperature_2m_max,
                             borderColor: 'rgb(192, 75, 75)',
                         },{ 
-                            label: 'Найнижча температура',
+                            label: 'Найнижча температура,°C',
                             data: json.daily.temperature_2m_min,
                             borderColor: 'rgb(75, 75, 192)', 
                         },{
                             type: 'bar',
-                            label: 'Дощ',
+                            label: 'Дощ, mm',
                             data: json.daily.rain_sum,
                             backgroundColor: 'rgb(0, 255, 0)',
                         },{
                             type: 'bar',
-                            label: 'Сніг',
+                            label: 'Сніг, mm',
                             data: json.daily.snowfall_sum,
                             backgroundColor: 'rgb(0, 255, 255)',
                         }]
