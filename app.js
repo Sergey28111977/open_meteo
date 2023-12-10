@@ -6,6 +6,7 @@ const App = {
             error: "",
             info: null,
             chart: null,
+            days: 14,
         }
     },
     methods: {
@@ -24,16 +25,18 @@ const App = {
             fetch(urlCity)
             .then(data => data.json())
             .then(json => infoURL(json))
+            const days = this.days;
             
             function infoURL(json) {                
                 
                 const lat = json.results[0].latitude;
                 const long = json.results[0].longitude;
                 const tz = json.results[0].timezone;
+                
 
 // Отримайте максимальну та мінімальну температуру
 
-                const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + long + '&daily=temperature_2m_max,temperature_2m_min,rain_sum,snowfall_sum,&forecast_days=14';
+                const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + long + '&daily=temperature_2m_max,temperature_2m_min,rain_sum,snowfall_sum,&forecast_days=' + days;
 
                 fetch(url)
                 .then(data => data.json())

@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <link rel="icon" type="image/svg+xml" href="./Favicon.png" />
   <title>Open-Meteo</title>
-  
   <link rel="stylesheet" href="./theme.css">
 </head>
 <body>
@@ -15,6 +14,12 @@
           type="text"
           :placeholder="placeholderString" 
           v-model="city"
+          @keyup.enter="getWeather()"
+      />
+      кількість днів:
+      <input 
+          type="text"
+          v-model="days"
           @keyup.enter="getWeather()"
       />
       <p class="error">{{ error }}</p>

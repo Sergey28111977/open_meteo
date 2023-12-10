@@ -15,6 +15,10 @@ input {
     font-size: 17px;
 }
 
+input:nth-child(2) {
+    width: 50px;
+}
+
 @media screen and (max-width: 1200px) {
     .container {
         width: 100%; 
