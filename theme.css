@@ -19,6 +19,10 @@ input:nth-child(2) {
     width: 50px;
 }
 
+#map {
+    height: 500px;
+}
+
 @media screen and (max-width: 1200px) {
     .container {
         width: 100%; 
