@@ -40,7 +40,7 @@ input:nth-child(2) {
     cursor:pointer;
     border: 1px solid #eee; /* Параметры рамки */
     box-shadow: 
-      3px 3px 5px rgba(0, 0, 0, 0.3), /* Чёрная тень */
+      3px 3px 5px rgba(0, 0, 0, 0.5), /* Чёрная тень */
       -3px -3px 5px #fff; /* Белая тень */
       border-radius: 5px;
       transition: 0.3s;
@@ -48,6 +48,10 @@ input:nth-child(2) {
 
 .btn:hover {
     scale: 125%;
+}
+
+.btn:active {
+    scale: 100%;
 }
 
 

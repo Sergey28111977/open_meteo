@@ -60,47 +60,92 @@ const App = {
 
                 initMap();
                 
-
 // Отримайте максимальну та мінімальну температуру
 
-                const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + long + '&daily=temperature_2m_max,temperature_2m_min,rain_sum,snowfall_sum,&forecast_days=' + days;
+                if(days > 3) {
 
-                fetch(url)
-                .then(data => data.json())
-                .then(json => drawChart(json))
-               
-                function drawChart(json) {
+                    let url;
 
-                    Chart.defaults.font.size = 16;
+                    url = 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + long + '&daily=temperature_2m_max,temperature_2m_min,rain_sum,snowfall_sum,&forecast_days=' + days;
 
-                    const mydata = {
-                        labels: json.daily.time,
-                        datasets: [{
-                            label: 'Найвища температура,°C',
-                            data: json.daily.temperature_2m_max,
-                            borderColor: 'rgb(192, 75, 75)',
-                        },{ 
-                            label: 'Найнижча температура,°C',
-                            data: json.daily.temperature_2m_min,
-                            borderColor: 'rgb(75, 75, 192)', 
-                        },{
-                            type: 'bar',
-                            label: 'Дощ, mm',
-                            data: json.daily.rain_sum,
-                            backgroundColor: 'rgb(0, 255, 0)',
-                        },{
-                            type: 'bar',
-                            label: 'Сніг, mm',
-                            data: json.daily.snowfall_sum,
-                            backgroundColor: 'rgb(0, 255, 255)',
-                        }]
-                    };
+                    fetch(url)
+                    .then(data => data.json())
+                    .then(json => drawChart(json))
 
-                    new Chart(document.getElementById('myChart'), {
-                        type: 'line',
-                        data: mydata,
-                    });
+                    function drawChart(json) {
+
+                        Chart.defaults.font.size = 16;
+    
+                        const mydata = {
+                            labels: json.daily.time,
+                            datasets: [{
+                                label: 'Найвища температура,°C',
+                                data: json.daily.temperature_2m_max,
+                                borderColor: 'rgb(192, 75, 75)',
+                            },{ 
+                                label: 'Найнижча температура,°C',
+                                data: json.daily.temperature_2m_min,
+                                borderColor: 'rgb(75, 75, 192)', 
+                            },{
+                                type: 'bar',
+                                label: 'Дощ, mm',
+                                data: json.daily.rain_sum,
+                                backgroundColor: 'rgb(0, 255, 0)',
+                            },{
+                                type: 'bar',
+                                label: 'Сніг, mm',
+                                data: json.daily.snowfall_sum,
+                                backgroundColor: 'rgb(0, 255, 255)',
+                            }]
+                        };
+    
+                        new Chart(document.getElementById('myChart'), {
+                            type: 'line',
+                            data: mydata,
+                        });
+                    }
+                    
+                        
+                } else {
+                    url = 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + long + '&hourly=temperature_2m,rain,snowfall&forecast_days=' + days;
+
+                    fetch(url)
+                    .then(data => data.json())
+                    .then(json => drawChart(json))
+
+                    function drawChart(json) {
+
+                        Chart.defaults.font.size = 16;
+    
+                        const mydata = {
+                            labels: json.hourly.time,
+                            datasets: [{
+                                label: 'Температура,°C',
+                                data: json.hourly.temperature_2m,
+                                borderColor: 'rgb(192, 75, 75)',
+                            },{
+                                type: 'bar',
+                                label: 'Дощ, mm',
+                                data: json.hourly.rain,
+                                backgroundColor: 'rgb(0, 255, 0)',
+                            },{
+                                type: 'bar',
+                                label: 'Сніг, mm',
+                                data: json.hourly.snowfall,
+                                backgroundColor: 'rgb(0, 255, 255)',
+                            }]
+                        };
+    
+                        new Chart(document.getElementById('myChart'), {
+                            type: 'line',
+                            data: mydata,
+                        });
+                    }
                 }
+
+                
+
+                
             }
         },
     },
