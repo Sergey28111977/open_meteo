@@ -31,35 +31,34 @@ const App = {
                 
                 const lat = json.results[0].latitude;
                 const long = json.results[0].longitude;
-                const tz = json.results[0].timezone;
 
                 // Initialize and add the map
-let map;
+                let map;
 
-async function initMap() {
-  // The location of Uluru
-  const position = { lat: lat, lng: long };
-  // Request needed libraries.
-  //@ts-ignore
-  const { Map } = await google.maps.importLibrary("maps");
-  const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
+                async function initMap() {
+                    // The location of Uluru
+                    const position = { lat: lat, lng: long };
+                    // Request needed libraries.
+                    //@ts-ignore
+                    const { Map } = await google.maps.importLibrary("maps");
+                    const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
 
-  // The map, centered at Uluru
-  map = new Map(document.getElementById("map"), {
-    zoom: 5,
-    center: position,
-    mapId: "DEMO_MAP_ID",
-  });
+                    // The map, centered at Uluru
+                    map = new Map(document.getElementById("map"), {
+                        zoom: 5,
+                        center: position,
+                        mapId: "DEMO_MAP_ID",
+                    });
 
-  // The marker, positioned at Uluru
-  const marker = new AdvancedMarkerView({
-    map: map,
-    position: position,
-    title: "Uluru",
-  });
-}
+                    // The marker, positioned at Uluru
+                    const marker = new AdvancedMarkerView({
+                        map: map,
+                        position: position,
+                        title: "Uluru",
+                    });
+                }
 
-initMap();
+                initMap();
                 
 
 // Отримайте максимальну та мінімальну температуру
@@ -69,9 +68,6 @@ initMap();
                 fetch(url)
                 .then(data => data.json())
                 .then(json => drawChart(json))
-
-
-
                
                 function drawChart(json) {
                     
@@ -102,12 +98,9 @@ initMap();
                         type: 'line',
                         data: mydata,
                     });
-
                 }
             }
-
         },
-
     },
     computed: {
         cityName() {
