@@ -6,7 +6,7 @@ const App = {
             error: "",
             info: null,
             chart: null,
-            days: 14,
+            days: 16,
         }
     },
     methods: {
@@ -70,7 +70,9 @@ const App = {
                 .then(json => drawChart(json))
                
                 function drawChart(json) {
-                    
+
+                    Chart.defaults.font.size = 16;
+
                     const mydata = {
                         labels: json.daily.time,
                         datasets: [{
