@@ -5,6 +5,15 @@
     box-sizing: border-box;
 }
 
+li {
+    list-style-type: none; /* Убираем маркеры */
+   }
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
 body {
     background: #dfebdf;
 }
@@ -54,6 +63,45 @@ input:nth-child(2) {
     scale: 100%;
 }
 
+.row {
+    margin: 10px;
+}
+
+.panel {
+    height: 145px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.panel:hover {
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: 0 2px 5px 2px rgba(80,119,242,.1),0 15px 20px 0 rgba(80,119,242,.15);
+  }
+
+.flex-grow-0 {
+    width: 20%;
+    margin-right: 10px;
+}
+
+.flex-grow-1 {
+    width: 70%;
+}
+
+.flex-grow-1 p:nth-child(1) {
+    font-weight: bold;
+}
+
+.flex-grow-2 {
+    width: 10%;
+}
+
+.flex-grow-0 img {
+    width: 100%;
+}
 
 @media screen and (max-width: 1200px) {
     .container {

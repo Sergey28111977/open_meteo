@@ -24,7 +24,9 @@
           @keyup.enter="getWeather()"
       />
       
+      
       <button class="btn" @click="getWeather()">{{ city }} </button>
+      
       <p class="error">{{ error }}</p>
       
         
@@ -32,6 +34,35 @@
     <div id="chartReport">
       <canvas id="myChart"></canvas>
     </div>
+    <hr/>
+    <ul>
+      <li v-for="{ results, url, title, body} in commits">
+        <div v-for=" i in 5 " class="row">
+          
+              <a :href="`${results[i-1].url}`" class="panel">
+            
+                <div class="flex-grow-0">
+                  <img :src="`${results[i-1].image}`" alt="">
+                </div>
+                <div class="flex-grow-1">
+                  <p>{{ results[i-1].title }}</p> <br>
+                  <p>{{ results[i-1].body }}</p>
+                </div>
+                <div class="flex-grow-2">
+                  {{ results[i-1].date }}
+                  {{ results[i-1].time }}
+                  {{ results[i-1].source.title }}
+                </div>
+              </a>
+            
+          
+        </div>
+      </li>
+    </ul>
+
+    
+    
+  
   </div>
   <hr/>
   <!-- Open-Meteo атрибуція -->

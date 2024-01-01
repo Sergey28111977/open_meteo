@@ -7,8 +7,15 @@ const App = {
             info: null,
             chart: null,
             days: 16,
+            commits: null,
         }
     },
+
+    created() {
+        // отримання даних при ініціалізації
+        this.fetchData()
+      },
+
     methods: {
         getWeather() {
 
@@ -141,19 +148,44 @@ const App = {
                             data: mydata,
                         });
                     }
-                }
-
-                
-
-                
+                }                
             }
         },
+
+        async fetchData() {
+            const url = 'https://newsapi.ai/api/v1/article/getArticles?query=%7B%22%24query%22%3A%7B%22%24and%22%3A%5B%7B%22keyword%22%3A%22%D0%B2%D1%96%D0%B9%D0%BD%D0%B0%20%D0%B2%20%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%96%22%2C%22keywordLoc%22%3A%22body%22%7D%2C%7B%22dateStart%22%3A%222023-12-25%22%2C%22dateEnd%22%3A%222024-01-01%22%7D%5D%7D%7D&resultType=articles&articlesSortBy=date&apiKey=e7be1d69-c189-4255-99bc-300ee6f74dfd';
+            this.commits = await (await fetch(url)).json()
+            console.log(this.commits)
+        },
     },
+    
     computed: {
         cityName() {
             return this.city
         },
-    },
+
+        
+
+
+        // news() {
+
+        //     const url='https://newsapi.ai/api/v1/article/getArticles?query=%7B%22%24query%22%3A%7B%22%24and%22%3A%5B%7B%22keyword%22%3A%22%D0%B2%D1%96%D0%B9%D0%BD%D0%B0%20%D0%B2%20%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%96%22%2C%22keywordLoc%22%3A%22body%22%7D%2C%7B%22dateStart%22%3A%222023-12-25%22%2C%22dateEnd%22%3A%222024-01-01%22%7D%5D%7D%7D&resultType=articles&articlesSortBy=date&apiKey=e7be1d69-c189-4255-99bc-300ee6f74dfd';
+
+        //     fetch(url)
+        //     .then(data => data.json())
+        //     .then(json => new_items(json));
+
+        //     function new_items(json) {
+        //         for (let i = 0; i <= 10; i++) {
+                    
+        //             this.new_title=json.articles.results[i].title;
+        //             console.log(this.new_title);
+        //         };
+                
+        //     }
+        // },
+        
+    }
 }
 
 
