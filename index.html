@@ -31,21 +31,20 @@
     </div>
     <hr/>
     <ul>
-      <li v-for="{ results, url, title, body} in commits">
+      <li v-for="{ articles, url, title, body} in commits">
         <div v-for=" i in 5 " class="row">
-          <a :href="`${results[i-1].url}`" class="panel">
+          <a :href="`${commits.articles[i-1].url}`" class="panel">
         
             <div class="flex-grow-0">
-              <img :src="`${results[i-1].image}`" alt="">
+              <img :src="`${commits.articles[i-1].urlToImage}`" alt="">
             </div>
             <div class="flex-grow-1">
-              <p>{{ results[i-1].title }}</p> <br>
-              <p>{{ results[i-1].body }}</p>
+              <p>{{ commits.articles[i-1].title }}</p> <br>
+              <p>{{ commits.articles[i-1].description }}</p>
             </div>
             <div class="flex-grow-2">
-              <p>{{ results[i-1].date }}</p>
-              <p>{{ results[i-1].time }}</p>
-              <p>{{ results[i-1].source.title }}</p>
+              <p>{{ commits.articles[i-1].publishedAt }}</p>
+              <p>{{ commits.articles[i-1].author }}</p>
             </div>
           </a>
         </div>
