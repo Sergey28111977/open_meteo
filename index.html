@@ -33,18 +33,18 @@
     <ul>
       <li v-for="{ articles, url, title, body} in commits">
         <div v-for=" i in 5 " class="row">
-          <a :href="`${commits.articles[i-1].url}`" class="panel">
+          <a :href="`${articles[i-1].url}`" class="panel">
         
             <div class="flex-grow-0">
-              <img :src="`${commits.articles[i-1].urlToImage}`" alt="">
+              <img :src="`${articles[i-1].urlToImage}`" alt="">
             </div>
             <div class="flex-grow-1">
-              <p>{{ commits.articles[i-1].title }}</p> <br>
-              <p>{{ commits.articles[i-1].description }}</p>
+              <p>{{ articles[i-1].title }}</p> <br>
+              <p>{{ articles[i-1].description }}</p>
             </div>
             <div class="flex-grow-2">
-              <p>{{ commits.articles[i-1].publishedAt }}</p>
-              <p>{{ commits.articles[i-1].author }}</p>
+              <p>{{ articles[i-1].publishedAt }}</p>
+              <p>{{ articles[i-1].author }}</p>
             </div>
           </a>
         </div>
