@@ -154,8 +154,16 @@ const App = {
 
         async fetchData() {
 
-            const url = 'https://newsapi.org/v2/top-headlines?country=ua&apiKey=1799f58a5ad44db6b75eec57e4ea5b4f';
-            this.commits = await (await fetch(url)).json();
+            const url = 'http://api.mediastack.com/v1/news?access_key=da2519fb140c548e5ac85f421d6a5708&countries=ua';
+            fetch(url)
+                    .then(data => data.json())
+                    .then(json => drawChart(json))
+
+                    function drawChart(json) {
+
+                            console.log(json.data) 
+                    
+                    }
         },
     },
     
