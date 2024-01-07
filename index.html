@@ -30,26 +30,27 @@
       <canvas id="myChart"></canvas>
     </div>
     <hr/>
-    <ul>
-      <li v-for="{ articles, url, title, body} in commits">
-        <div v-for=" i in 5 " class="row">
-        <a :href="`${commits.articles[i-1].url}`" class="panel">
+    <ul class="news">
+      <li v-for="{ status, totalResults, articles, author } in commits">
+        <div v-for=" i in commits.articles.length " class="row">
+          
+          <a :href="`${commits.articles[i-1].url}`" class="panel">
         
-           <div class="flex-grow-0">
-          <img :src="`${commits.articles[i-1].urlToImage}`" alt="">
+          <div class="flex-grow-0">
+            <img :src="`${commits.articles[i-1].urlToImage}`" alt="">
           </div>
           <div class="flex-grow-1">
-          <p>{{ commits.articles[i-1].title }}</p> <br>
-          <p>{{ commits.articles[i-1].description }}</p>
+            <p>{{ commits.articles[i-1].title }}</p> <br>
+            <p>{{ commits.articles[i-1].description }}</p>
           </div>
           <div class="flex-grow-2">
-          <p>{{ commits.articles[i-1].publishedAt }}</p>
-          <p>{{ commits.articles[i-1].author }}</p>
-          </div> 
-        </a>
+            <p>{{ formatDate(commits.articles[i-1].publishedAt) }}</p>
+            <p>{{ commits.articles[i-1].author }}</p>
+          </div>
+          </a>
         </div>
       </li>
-      </ul>
+    </ul>
 
   </div>
   <hr/>
