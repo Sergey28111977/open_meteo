@@ -31,8 +31,11 @@
     </div>
     <hr/>
     <ul class="news">
-      <li v-for="{ status, totalResults, articles, author } in commits">
-        <div v-for=" i in commits.articles.length " class="row">
+      <li v-for="{ time, disclaimer, chartName, bpi } , i in commits">
+        {{commits.time.updated}}
+        {{commits.chartName}} -->
+        {{commits.bpi.USD.code }} &#36 {{commits.bpi.USD.rate}} {{commits.bpi.USD.description}}
+        <!-- <div v-for=" i in commits.articles.length " class="row">
           
           <a :href="`${commits.articles[i-1].url}`" class="panel">
         
@@ -48,7 +51,7 @@
             <p>{{ commits.articles[i-1].author }}</p>
           </div>
           </a>
-        </div>
+        </div> -->
       </li>
     </ul>
 

@@ -63,11 +63,6 @@ input:nth-child(2) {
     scale: 100%;
 }
 
-.news li:nth-child(2),
-.news li:nth-child(3) {
-    display: none;
-}
-
 .row {
     margin: 10px;
 }

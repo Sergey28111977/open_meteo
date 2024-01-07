@@ -153,8 +153,8 @@ const App = {
         },
 
         async fetchData() {
-
-            const url = 'https://newsapi.org/v2/top-headlines?country=ua&apiKey=1799f58a5ad44db6b75eec57e4ea5b4f';
+            
+            const url = 'https://api.coindesk.com/v1/bpi/currentprice.json';
             this.commits = await (await fetch(url)).json();           
         },
 
