@@ -30,30 +30,16 @@
       <canvas id="myChart"></canvas>
     </div>
     <hr/>
-    <ul class="news">
-      <li v-for="{ time, disclaimer, chartName, bpi } , i in commits">
-        {{commits.time.updated}}
-        {{commits.chartName}} -->
-        {{commits.bpi.USD.code }} &#36 {{commits.bpi.USD.rate}} {{commits.bpi.USD.description}}
-        <!-- <div v-for=" i in commits.articles.length " class="row">
-          
-          <a :href="`${commits.articles[i-1].url}`" class="panel">
-        
-          <div class="flex-grow-0">
-            <img :src="`${commits.articles[i-1].urlToImage}`" alt="">
-          </div>
-          <div class="flex-grow-1">
-            <p>{{ commits.articles[i-1].title }}</p> <br>
-            <p>{{ commits.articles[i-1].description }}</p>
-          </div>
-          <div class="flex-grow-2">
-            <p>{{ formatDate(commits.articles[i-1].publishedAt) }}</p>
-            <p>{{ commits.articles[i-1].author }}</p>
-          </div>
-          </a>
-        </div> -->
-      </li>
-    </ul>
+    <div class="news">
+      <div v-for="i  in commits" >
+        <p>{{commits.time.updated}}</p>
+        <p>{{commits.disclaimer}}</p>
+        <h2>{{commits.chartName}}</h2>
+        <p>{{commits.bpi.USD.code }} &#36; <span>{{commits.bpi.USD.rate}}</span> {{commits.bpi.USD.description}}</p>
+        <p>{{commits.bpi.GBP.code }} &pound; <span>{{commits.bpi.GBP.rate}}</span> {{commits.bpi.GBP.description}}</p>
+        <p>{{commits.bpi.EUR.code }} &euro; <span>{{commits.bpi.EUR.rate}}</span> {{commits.bpi.EUR.description}}</p>
+      </div>
+    </div>
 
   </div>
   <hr/>

@@ -62,6 +62,24 @@ input:nth-child(2) {
 .btn:active {
     scale: 100%;
 }
+.news {
+    margin: 0 auto;
+}
+
+.news div {
+    text-align: center;
+}
+
+.news span {
+    color: red;
+    font-weight: bold;
+}
+
+.news div:nth-child(2),
+.news div:nth-child(3),
+.news div:nth-child(4) {
+    display: none;
+}
 
 .row {
     margin: 10px;
