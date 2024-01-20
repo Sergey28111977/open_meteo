@@ -2,7 +2,7 @@ const App = {
     data() {
         return {
             placeholderString: 'Введіть назву міста',
-            city: 'Krakow',
+            city: '',
             error: "",
             info: null,
             chart: null,
@@ -13,7 +13,8 @@ const App = {
 
     created() {
         // отримання даних при ініціалізації
-        this.fetchData()
+        this.fetchData(),
+        this.fetchIP()
       },
 
     methods: {
@@ -156,6 +157,12 @@ const App = {
             
             const url = 'https://api.coindesk.com/v1/bpi/currentprice.json';
             this.commits = await (await fetch(url)).json();           
+        },
+
+        async fetchIP() {
+            const url = 'https://ipinfo.io/89.64.42.107?token=11d31f4d927834';
+            const cityIP = await (await fetch(url)).json();
+            this.city = cityIP.city;         
         },
 
         formatDate(v) {
