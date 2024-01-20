@@ -160,7 +160,7 @@ const App = {
         },
 
         async fetchIP() {
-            const url = 'https://ipinfo.io/89.64.42.107?token=11d31f4d927834';
+            const url = 'https://ipinfo.io?token=11d31f4d927834';
             const cityIP = await (await fetch(url)).json();
             this.city = cityIP.city;         
         },
