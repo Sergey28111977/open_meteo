@@ -6,7 +6,7 @@ const App = {
             error: "",
             info: null,
             chart: null,
-            days: 16,
+            days: '16',
             commits: null
         }
     },
@@ -18,20 +18,43 @@ const App = {
       },
 
     methods: {
-        getWeather() {
 
-            const days = this.days;
+        getWeatherPosition() {
+
+            document.querySelector("#chartReport").innerHTML = '<hr><canvas id="myChart"></canvas><hr><div id="map" style="width: 100%;" ></div>';
+
+            navigator.geolocation.getCurrentPosition(position => {
+                const pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                };
+
+                initMap(pos.lat, pos.lng);
+
+                if(this.days > 3) {
+                    drawChart_1(pos.lat, pos.lng, this.days)    
+                } else {
+                    drawChart_2(pos.lat, pos.lng, this.days) 
+                } 
+            });
+
+            
+        },
+
+
+        getWeather() {
 
             if(this.city.trim().length < 2) {
                 this.error = "Потрібна назва більше одного символу :)"
                 return false
             }
 
-            document.querySelector("#chartReport").innerHTML = '<canvas id="myChart"></canvas>';
+            document.querySelector("#chartReport").innerHTML = '<hr><canvas id="myChart"></canvas><hr><div id="map" style="width: 100%;" ></div>';
+            
 
             this.error = ""
 
-            infoCity(this.city, days)
+            infoCity(this.city, this.days)
         },
 
         async fetchData() {
@@ -73,32 +96,9 @@ function infoCity(city, days){
         const long = json.results[0].longitude;
 
         // Initialize and add the map
-        let map;
+        
 
-        async function initMap() {
-            // The location of Uluru
-            const position = { lat: lat, lng: long };
-            // Request needed libraries.
-            //@ts-ignore
-            const { Map } = await google.maps.importLibrary("maps");
-            const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
-
-            // The map, centered at Uluru
-            map = new Map(document.getElementById("map"), {
-                zoom: 5,
-                center: position,
-                mapId: "DEMO_MAP_ID",
-            });
-
-            // The marker, positioned at Uluru
-            const marker = new AdvancedMarkerView({
-                map: map,
-                position: position,
-                title: "Uluru",
-            });
-        }
-
-        initMap();
+        initMap(lat, long);
         
         // Отримайте максимальну та мінімальну температуру
 
@@ -109,6 +109,31 @@ function infoCity(city, days){
         }                
     }
 };
+
+let map;
+
+    async function initMap(lat, long) {
+        // The location of Uluru
+        const position = { lat: lat, lng: long };
+        // Request needed libraries.
+        //@ts-ignore
+        const { Map } = await google.maps.importLibrary("maps");
+        const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
+
+        // The map, centered at Uluru
+        map = new Map(document.getElementById("map"), {
+            zoom: 10,
+            center: position,
+            mapId: "DEMO_MAP_ID",
+        });
+
+        // The marker, positioned at Uluru
+        const marker = new AdvancedMarkerView({
+            map: map,
+            position: position,
+            title: "Uluru",
+        });
+    };
 
 function drawChart_1(lat, long, days){
 

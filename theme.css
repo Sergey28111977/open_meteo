@@ -14,6 +14,10 @@ a {
     color: black;
 }
 
+hr {
+    margin: 10px 0;
+}
+
 body {
     background: #dfebdf;
 }

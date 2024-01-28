@@ -24,12 +24,14 @@
           @keyup.enter="getWeather()"
       />
       <button class="btn" @click="getWeather()">{{ city }} </button>
+      <button class="btn" @click="getWeatherPosition()">Погода в поточному місці </button>
       <p class="error">{{ error }}</p>
+     
     </div>
-    <div id="chartReport">
-      <canvas id="myChart" ></canvas>
-    </div>
+    <div id="chartReport"></div>
     <hr/>
+    <!--The div element for the map -->
+  
     <div class="news">
       <div v-for="i  in commits" >
         <p>{{commits.time.updated}}</p>
@@ -40,15 +42,14 @@
         <p>{{commits.bpi.EUR.code }} &euro; <span>{{commits.bpi.EUR.rate}}</span> {{commits.bpi.EUR.description}}</p>
       </div>
     </div>
-
+    <hr/>
+    <!-- Open-Meteo атрибуція -->
+    <small><a href="https://open-meteo.com/">Weather data by Open-Meteo.com</a></small>
+  
+    <h3>My Google Maps Demo</h3>
   </div>
-  <hr/>
-  <!-- Open-Meteo атрибуція -->
-  <small><a href="https://open-meteo.com/">Weather data by Open-Meteo.com</a></small>
 
-  <h3>My Google Maps Demo</h3>
-  <!--The div element for the map -->
-  <div id="map" style="width: 100%;" ></div>
+ 
 
   <!-- prettier-ignore -->
   <script>
