@@ -124,15 +124,29 @@ let map;
         map = new Map(document.getElementById("map"), {
             zoom: 10,
             center: position,
-            mapId: "DEMO_MAP_ID",
+            mapId: "4504f8b37365c3d0",
+        });
+
+        const contentString = '<p><b>Широта: ' + lat + '</b></p> <b>Довгота: ' + long + '</b>';
+
+        const infowindow = new google.maps.InfoWindow({
+            content: contentString,
+            ariaLabel: "Uluru",
         });
 
         // The marker, positioned at Uluru
         const marker = new AdvancedMarkerView({
             map: map,
             position: position,
-            title: "Uluru",
+            title: "Місце знаходження",
         });
+
+        marker.addListener("click", () => {
+            infowindow.open({
+              anchor: marker,
+              map,
+            });
+          });
     };
 
 function drawChart_1(lat, long, days){
